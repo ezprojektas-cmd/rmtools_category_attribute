@@ -17,7 +17,7 @@ else:
     report_lines = ["=== TOP-DOWN LOGIKA (Patobulinta šakų izoliacija) ==="]
 
     for category in sorted_categories:
-        # Nustatome visus protėvius (tėvus, senelius) iki pat root_id
+        # Nustatome visus protėvius (tėvus, senelius) iki pat root_idgit 
         # Tai svarbu, kad nesidubliuotų filtrai el. parduotuvės navigacijoje
         ancestor_ids = []
         curr = category.parent_id
