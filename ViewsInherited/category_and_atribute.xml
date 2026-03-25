@@ -1,0 +1,7 @@
+<!-- # web category list -->
+
+<!-- RmTools: parent_and_current_atributes  -->
+<!-- Sequesnce: 100  -->
+<xpath expr="//field[@name='display_name']" position="after">
+    <field name="x_rmtools_formated_parent_html" widget="html" string="Attributes" readonly="1"/>
+</xpath>
