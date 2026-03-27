@@ -1,8 +1,11 @@
 # prideta kad vaikinė tikrintų tik tevus ir senelius ir tik jei juose yra panaidota atributas tampa used, t.y. tikrinam kinkrečiai toje šakoje
 # root_id = 5758 #Drilling, screwing tools
 # root_id = 5770 #Fasteners 
+#########
+# patikrinti kalida kuri priskiria  sudubliuotus atributus 
+root_id = 5761#73 #Hand tools
 # 1. Konfigūracija
-root_id = 5766  # Gas, torches, heaters, soldering irons
+# root_id = 5766  # Gas, torches, heaters, soldering irons
 root_category = env['product.public.category'].browse(root_id)
 
 if not root_category.exists():
@@ -10,7 +13,13 @@ if not root_category.exists():
 else:
     # Pasiimame visas vaikines kategorijas (įskaitant root)
     all_categories = env['product.public.category'].search([('id', 'child_of', root_id)])
-    sorted_categories = all_categories.sorted(key=lambda c: c.display_name)
+    
+    # 2. IŠVALOME SENUS DUOMENIS (SVARBU!)
+    # (5, 0, 0) - Odoo komanda, kuri pašalina visus sąryšius M2M lauke
+    all_categories.write({'x_studio_mandatory_attributes': [(5, 0, 0)]})
+    
+    # sorted_categories = all_categories.sorted(key=lambda c: c.display_name)
+    sorted_categories = all_categories.sorted(key=lambda c: c.parent_path)
 
     # Žodynas pavadinimų sekimui (izoliacijai šakose)
     category_assigned_names = {} 
