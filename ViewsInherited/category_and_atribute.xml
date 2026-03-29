@@ -5,3 +5,26 @@
 <xpath expr="//field[@name='display_name']" position="after">
     <field name="x_rmtools_formated_parent_html" widget="html" string="Attributes" readonly="1"/>
 </xpath>
+
+<!-- Insert catecory mandatory atributes in product variants  -->
+<!-- product.template.product.form  -->
+<!-- Sequesnce: 16  -->
+<xpath expr="//page[@name='variants']/*[1]" position="before">
+    <div class="alert alert-warning py-2 mb-3 d-flex align-items-center" 
+         invisible="public_categ_ids">
+        <i class="fa fa-exclamation-triangle me-2"></i>
+        <span>Nėra pasirinktos Web Kategorijos, prašome priskirti</span>
+    </div>
+
+    <div invisible="not public_categ_ids">
+        <div class="o_horizontal_separator mt-3 mb-2 text-uppercase fw-bolder small text-primary">
+            Mandatory Web Category Attributes
+        </div>
+        <field name="x_rmtools_product_mandatory_attributes_html" 
+               nolabel="1" 
+               widget="html" 
+               readonly="1" 
+               class="w-100 mb-4"/>
+    </div>
+</xpath>
+
