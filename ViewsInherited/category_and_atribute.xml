@@ -28,3 +28,12 @@
     </div>
 </xpath>
 
+<!-- ############################ -->
+<!-- padarom atributu sukurime Variant Creation read only   -->
+
+<!-- product.attribute.form -->
+<!-- RmTools: product.attribute.custom_fields  -->
+<!-- Sequesnce: 100  -->
+<xpath expr="//field[@name='create_variant']" position="attributes">
+    <attribute name="readonly">1</attribute>
+</xpath>
