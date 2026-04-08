@@ -6,34 +6,57 @@
     <field name="x_rmtools_formated_parent_html" widget="html" string="Attributes" readonly="1"/>
 </xpath>
 
+<!-- ####################### -->
 <!-- Insert catecory mandatory atributes in product variants  -->
 <!-- product.template.product.form  -->
 <!-- Sequesnce: 16  -->
-<xpath expr="//page[@name='variants']/*[1]" position="before">
-    <div class="alert alert-warning py-2 mb-3 d-flex align-items-center" 
-         invisible="public_categ_ids">
-        <i class="fa fa-exclamation-triangle me-2"></i>
-        <span>Nėra pasirinktos Web Kategorijos, prašome priskirti</span>
-    </div>
-
-    <div invisible="not public_categ_ids">
-        <div class="o_horizontal_separator mt-3 mb-2 text-uppercase fw-bolder small text-primary">
-            Mandatory Web Category Attributes
+<data>
+    <xpath expr="//page[@name='variants']/*[1]" position="before">
+        <div class="alert alert-warning py-2 mb-3 d-flex align-items-center" 
+            invisible="public_categ_ids">
+            <i class="fa fa-exclamation-triangle me-2"></i>
+            <span>Nėra pasirinktos Web Kategorijos, prašome priskirti</span>
         </div>
-        <field name="x_rmtools_product_mandatory_attributes_html" 
-               nolabel="1" 
-               widget="html" 
-               readonly="1" 
-               class="w-100 mb-4"/>
-    </div>
-</xpath>
+
+        <div invisible="not public_categ_ids">
+            <div class="o_horizontal_separator mt-3 mb-2 text-uppercase fw-bolder small text-primary">
+                Mandatory Web Category Attributes
+            </div>
+            <field name="x_rmtools_product_mandatory_attributes_html" 
+                nolabel="1" 
+                widget="html" 
+                readonly="1" 
+                class="w-100 mb-4"/>
+        </div>
+
+        <!-- Pridedam mygtuka su kuriuo pridedam trukstamus  atributus  -->
+        <group>
+            <field name="x_rmtools_add_mandatory_attributes"/>
+        </group>
+    </xpath>
+    <!-- sudedam constraint atribute fields kad ismestu klaida  kai bandai issaugoti 2 Values vienam atributui  -->
+    <!-- product.template.product.form  -->
+    <!-- Sequesnce: 16  -->
+    <!-- RmTools: product.template.custom_fields  -->
+    <xpath expr="//page[@name='variants']//field[@name='attribute_line_ids']/list//field[@name='attribute_id']" position="after">
+        <field name="x_rmtools_product_attribute_constraint_html" string=" " readonly="1" widget="html" invisible="not x_rmtools_product_attribute_constraint_html"/>
+        
+       <field name="x_rmtools_product_attribute_constraint_required" string=" " required="x_rmtools_product_attribute_constraint_html != False" style="width: 0px; opacity: 0; pointer-events: none;" optional="hide"/>
+    </xpath>
+</data>
+
 
 <!-- ############################ -->
 <!-- padarom atributu sukurime Variant Creation read only   -->
 
 <!-- product.attribute.form -->
 <!-- RmTools: product.attribute.custom_fields  -->
-<!-- Sequesnce: 100  -->
+<!-- Sequesnce: 16 -->
 <xpath expr="//field[@name='create_variant']" position="attributes">
     <attribute name="readonly">1</attribute>
 </xpath>
+
+<!-- sudedam constraint atribute fields kad ismestu klaida  kai bandai issaugoti 2 Values vienam atributui  -->
+<!-- product.template.product.form  -->
+<!-- Sequesnce: 16  -->
+<!-- RmTools: product.template.custom_fields  -->

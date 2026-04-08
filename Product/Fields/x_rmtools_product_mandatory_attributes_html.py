@@ -15,7 +15,14 @@ for record in self:
         continue
 
     # Naudojame set() greitesnei paieškai (O(1) vietoj O(n))
-    existing_attr_ids = set(record.attribute_line_ids.attribute_id.ids)
+    # existing_attr_ids = set(record.attribute_line_ids.attribute_id.ids).ids
+    existing_attr_ids = record.attribute_line_ids.mapped('attribute_id').ids
+
+    # existing_attr_ids = set()
+    # for line in record.attribute_line_ids:
+    #     if line.attribute_id:
+    #         # paimame .id, kuris Odoo 18 automatiškai ištraukia tikrąjį ID net iš NewId
+    #         existing_attr_ids.add(line.attribute_id.id)
     
     html_output = '<div class="d-flex flex-column gap-4">'
     
@@ -45,7 +52,9 @@ for record in self:
             attr_badges = []
             # Rūšiuojame atmintyje (Python lygmenyje), kad neliestume DB
             for attr in mandatory_attrs.sorted('name'):
-                is_existing = attr.id in existing_attr_ids
+                actual_id = attr._origin.id if attr._origin else attr.id
+                is_existing = actual_id in existing_attr_ids
+                # is_existing = attr.id in existing_attr_ids
                 color_index = "10" if is_existing else "1"
                 icon = '' if is_existing else 'fa-exclamation'
                 
