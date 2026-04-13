@@ -13,7 +13,7 @@ if record.x_rmtools_add_mandatory_attributes:
         all_categories |= temp_cats
 
     # 2. Ištraukiame tikruosius ID sąrašą [.ids paverčia NewId į paprastus skaičius]
-    mandatory_attr_ids = all_categories.mapped('x_studio_mandatory_attributes').ids
+    mandatory_attr_ids = all_categories.mapped('x_rmtools_mandatory_attributes').ids
     
     existing_ids = record.attribute_line_ids.mapped('attribute_id').ids
     

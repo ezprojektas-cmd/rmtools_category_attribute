@@ -7,7 +7,7 @@
 
 ## 📋 Laukų sąrašas
 
-### 1. `x_studio_mandatory_attributes`
+### 1. `x_studio_mandatory_attributes` prod `x_rmtools_mandatory_attributes`
 stored
 many2many
 model: Website Product Category
@@ -44,7 +44,7 @@ for record in self:
 ```
 
 
-### 3. `x_forbidden_attribute_ids`
+### 3. `x_forbidden_attribute_ids` prod `x_rmtoos_forbidden_attribute_ids`
 non stored
 many2many
 model: Website Product Category

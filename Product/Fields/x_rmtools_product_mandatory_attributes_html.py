@@ -1,7 +1,7 @@
 # x_rmtools_product_mandatory_attributes_html
 # type: htmt
 # Label: Product Mandatory Attributes
-# Demendencies: public_categ_ids, attribute_line_ids.attribute_id, public_categ_ids.x_studio_mandatory_attributes
+# Demendencies: public_categ_ids, attribute_line_ids.attribute_id, public_categ_ids.x_rmtools_mandatory_attributes for prod public_categ_ids.x_rmtools_mandatory_attributes
 # Stored = false
 
 # 1. Iš anksto užkrauname visus susijusius duomenis visiems įrašams (Prefetching)
@@ -45,7 +45,7 @@ for record in self:
         levels_with_attrs = []
         for c in category_hierarchy:
             # Prieiga prie Studio lauko
-            mandatory_attrs = c.x_studio_mandatory_attributes
+            mandatory_attrs = c.x_rmtools_mandatory_attributes
             if not mandatory_attrs:
                 continue
                 

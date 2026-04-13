@@ -1,3 +1,34 @@
+
+<!-- # web category form  -->
+<!-- RmTools: product.public.category.form.custom_fields  -->
+
+<data>
+    <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+        <page string="Mandatory Attributes" name="mandatory_attributes" invisible="False">
+            <group string="Parrent &gt; Current &gt; Child Attributes" invisible="False">
+              <field name="x_rmtools_parrent_current_child_atributes_html" widget="html" nolabel="1" colspan="2"/>
+            </group>
+            <group string="Select Mandatory Attribute" invisible="False">
+
+                <field name="x_rmtools_forbidden_attribute_ids" invisible="1"/>
+                <field name="x_rmtools_mandatory_attributes" nolabel="1" domain="[('id', 'not in', x_rmtools_forbidden_attribute_ids)]" help="Add Mandatory Attribute to Web Category">
+                    <list string="Mandatory Attributes">
+                            <field name="sequence" widget="handle"/>
+                            <field name="name"/>
+                            <field name="display_type"/>
+                            <field name="create_variant"/>
+                            <field name="visibility" string="eCommerce Filter Visibility"/>
+                    </list>
+                </field>
+
+            </group>
+        </page>
+    </xpath>
+</data>
+
+
+
+
 <!-- # web category list -->
 
 <!-- RmTools: parent_and_current_atributes  -->
@@ -8,6 +39,7 @@
 
 <!-- ####################### -->
 <!-- Insert catecory mandatory atributes in product variants  -->
+<!-- prideta prie jau kurto  -->
 <!-- product.template.product.form  -->
 <!-- Sequesnce: 16  -->
 <data>
